@@ -1,0 +1,15 @@
+{
+  "applicantId": "6561ea6803716738f2545ef9",
+  "inspectionId": "6561ea6803716738f2545efa",
+  "applicantType": "individual",
+  "correlationId": "baf7bdbf7d08ee246673771aaf735c22",
+  "levelName": "basic-kyc-level",
+  "sandboxMode": true,
+  "externalUserId": "testUser1",
+  "type": "applicantReviewed",
+  "reviewStatus": "completed",
+  "reviewResult": { "reviewAnswer": "GREEN" },
+  "createdAt": "2023-11-25 12:38:55+0000",
+  "createdAtMs": "2023-11-25 12:38:55.536",
+  "clientId": "wazi"
+}

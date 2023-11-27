@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.Process-Completed {
+  text-align: center;
+  margin: 20px;
+  font-size: larger;
+  color: #25B793;
+}

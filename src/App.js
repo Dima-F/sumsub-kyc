@@ -1,23 +1,72 @@
-import logo from './logo.svg';
 import './App.css';
+import SumsubWebSdk from '@sumsub/websdk-react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
+const MESSAGE_STATUSES = {
+  APPLICANT_SUBMITTED: 'idCheck.onApplicantSubmitted',
+  STATUS_CHANGED: 'idCheck.onApplicantStatusChanged',
+  STEP_COMPLETED: 'idCheck.onStepCompleted',
+  LIVENESS_COMPLETED: 'idCheck.onLivenessCompleted'
+}
+
+const REVIEW_STATUSES = {
+  PENDING : 'pending',
+  COMPLETED: 'completed'
+}
 
 function App() {
+  const [token, setToken] = useState(null);
+  const [completed, setCompleted] = useState(false);
+
+  useEffect(() => {
+    axios.get('/access-token', {
+      params: {
+        externalUserId: 'abcd12345'
+      }
+    })
+    .then(res => {
+      res?.data?.token && setToken(res.data.token)
+    })
+    .catch(e => console.error(e))
+  }, [])
+
+  const handleMessage = (message, options) => {
+    switch(message) {
+      case MESSAGE_STATUSES.STATUS_CHANGED: {
+        if(options.reviewStatus === REVIEW_STATUSES.COMPLETED) {
+          setCompleted(true);
+        }
+        break;
+      }
+      default: return;
+    }
+  }
+
+  const handleError = (e) => {
+    console.error(e);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        token ? (
+          <SumsubWebSdk
+            accessToken={token}
+            expirationHandler={()=>{}}
+            config={{
+              // lang: 'fr'
+              theme: 'Purple btn'
+            }}
+            options={{}}
+            onMessage={handleMessage}
+            onError={handleError}
+          />
+        ) : null
+      }
+      {
+        completed && <h2 className='Process-Completed'>Process completed</h2>
+      }
     </div>
   );
 }

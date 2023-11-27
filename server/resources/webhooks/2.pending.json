@@ -1,0 +1,15 @@
+{
+  "applicantId": "6561ea6803716738f2545ef9",
+  "inspectionId": "6561ea6803716738f2545efa",
+  "applicantType": "individual",
+  "correlationId": "4ac3209a2d2b868e2195768c3baffa6e",
+  "levelName": "basic-kyc-level",
+  "sandboxMode": true,
+  "externalUserId": "testUser1",
+  "type": "applicantCreated",
+  "reviewStatus": "init",
+  "createdAt": "2023-11-25 12:36:56+0000",
+  "createdAtMs": "2023-11-25 12:36:56.673",
+  "clientId": "wazi"
+}
+  
