@@ -1,6 +1,6 @@
 import './App.css';
 import SumsubWebSdk from '@sumsub/websdk-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useId } from 'react'
 import axios from 'axios'
 
 const MESSAGE_STATUSES = {
@@ -18,11 +18,12 @@ const REVIEW_STATUSES = {
 function App() {
   const [token, setToken] = useState(null);
   const [completed, setCompleted] = useState(false);
+  const id = useId();
 
   useEffect(() => {
     axios.get('/access-token', {
       params: {
-        externalUserId: 'abcd12345'
+        externalUserId: `user_${id}`
       }
     })
     .then(res => {
