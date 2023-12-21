@@ -1,3 +1,6 @@
+## Requirenments:
+* node.js (at least 18.17.1 version)
+
 ### Run project
 
 * `npm i`
